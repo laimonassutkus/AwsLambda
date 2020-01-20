@@ -8,7 +8,7 @@ with open('HISTORY.md') as history_file:
 
 setup(
     name='aws_lambda',
-    version='2.0.0',
+    version='2.0.1',
     license='GNU GENERAL PUBLIC LICENSE Version 3',
     packages=find_packages(exclude=['venv', 'test']),
     description='Package which helps to do various actions associated with AWS Lambda functions.',
@@ -28,12 +28,13 @@ setup(
     author='Laimonas Sutkus',
     author_email='laimonas.sutkus@gmail.com',
     keywords='AWS CDK CloudFormation Troposphere Lambda Infrastructure Cloud DevOps DeploymentPackage',
-    url='https://github.com/laimonassutkus/AwsCfSdk',
+    url='https://github.com/laimonassutkus/AwsLambda',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Operating System :: OS Independent',
     ],
 )
