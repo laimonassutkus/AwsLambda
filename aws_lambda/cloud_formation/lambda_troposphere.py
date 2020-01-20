@@ -5,9 +5,9 @@ from troposphere.ec2 import SecurityGroup, Subnet
 from troposphere.iam import Role
 
 
-class LambdaCfFunction:
+class LambdaFunction:
     """
-    Class which creates AWS Lambda function CF definition.
+    Class which creates AWS Lambda function CF definition with Troposphere library.
     """
     def __init__(
             self,
@@ -20,7 +20,8 @@ class LambdaCfFunction:
             role: Role,
             env: Dict[Any, Any],
             security_groups: List[SecurityGroup],
-            subnets: List[Subnet]
+            subnets: List[Subnet],
+            **kwargs
     ) -> None:
         """
         Constructor.
@@ -35,6 +36,7 @@ class LambdaCfFunction:
         :param env: OS-level environment variables for the function.
         :param security_groups: Security groups for the function.
         :param subnets: Subnets in which the function lives. Note, subnets must have NAT Gateway.
+        :param kwargs: Other custom parameters.
         """
         self.lambda_function = Function(
             prefix + "Lambda",
@@ -52,7 +54,8 @@ class LambdaCfFunction:
             VpcConfig=VPCConfig(
                 SecurityGroupIds=[Ref(sg) for sg in security_groups],
                 SubnetIds=[Ref(sub) for sub in subnets]
-            )
+            ),
+            **kwargs
         )
 
     def add(self, template: Template) -> None:

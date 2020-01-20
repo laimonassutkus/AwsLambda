@@ -1,21 +1,33 @@
 from setuptools import setup, find_packages
 
+with open('README.md') as readme_file:
+    README = readme_file.read()
+
+with open('HISTORY.md') as history_file:
+    HISTORY = history_file.read()
+
 setup(
     name='aws_lambda',
-    version='1.0.0',
+    version='2.0.0',
     license='GNU GENERAL PUBLIC LICENSE Version 3',
-    packages=find_packages(),
+    packages=find_packages(exclude=['venv', 'test']),
     description='Package which helps to do various actions associated with AWS Lambda functions.',
+    long_description=README + '\n\n' + HISTORY,
+    long_description_content_type="text/markdown",
     include_package_data=True,
     install_requires=[
         'boto3',
         'botocore',
         'troposphere',
+        'aws-cdk.core',
+        'aws-cdk.aws_iam',
+        'aws-cdk.aws_ec2',
+        'aws-cdk.aws_lambda',
         'cfnresponse'
     ],
     author='Laimonas Sutkus',
     author_email='laimonas.sutkus@gmail.com',
-    keywords='AWS SDK CloudFormation Lambda Infrastructure Cloud',
+    keywords='AWS CDK CloudFormation Troposphere Lambda Infrastructure Cloud DevOps DeploymentPackage',
     url='https://github.com/laimonassutkus/AwsCfSdk',
     classifiers=[
         'Programming Language :: Python :: 3',
