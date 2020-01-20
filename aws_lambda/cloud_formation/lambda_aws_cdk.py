@@ -1,4 +1,4 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from aws_cdk.aws_ec2 import SecurityGroup, Subnet, Vpc
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_lambda import Function, Code, Runtime
@@ -23,6 +23,7 @@ class LambdaFunction:
             security_groups: List[SecurityGroup],
             subnets: List[Subnet],
             vpc: Vpc,
+            source_code: Optional[Code] = None,
             **kwargs
     ) -> None:
         """
@@ -40,12 +41,13 @@ class LambdaFunction:
         :param security_groups: Security groups for the function.
         :param subnets: Subnets in which the function lives. Note, subnets must have NAT Gateway.
         :param vpc: A VPC to put this lambda into.
+        :param source_code: Code to include in this resource.
         :param kwargs: Other custom parameters.
         """
         self.lambda_function = Function(
             scope=scope,
             id=prefix + "Lambda",
-            code=Code().inline(code=' '),
+            code=source_code or Code().inline(code=' '),
             handler=handler,
             runtime=runtime,
             allow_all_outbound=False,

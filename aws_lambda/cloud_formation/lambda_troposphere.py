@@ -1,4 +1,4 @@
-from typing import List, Any, Dict
+from typing import List, Any, Dict, Optional
 from troposphere import GetAtt, Template, Ref
 from troposphere.awslambda import Code, Function, VPCConfig, Environment
 from troposphere.ec2 import SecurityGroup, Subnet
@@ -21,6 +21,7 @@ class LambdaFunction:
             env: Dict[Any, Any],
             security_groups: List[SecurityGroup],
             subnets: List[Subnet],
+            code: Optional[Code] = None,
             **kwargs
     ) -> None:
         """
@@ -36,11 +37,12 @@ class LambdaFunction:
         :param env: OS-level environment variables for the function.
         :param security_groups: Security groups for the function.
         :param subnets: Subnets in which the function lives. Note, subnets must have NAT Gateway.
+        :param source_code: Code to include in this resource.
         :param kwargs: Other custom parameters.
         """
         self.lambda_function = Function(
             prefix + "Lambda",
-            Code=Code(ZipFile=' '),
+            Code=code or Code(ZipFile=' '),
             Handler=handler,
             Role=GetAtt(role, "Arn"),
             Runtime=runtime,

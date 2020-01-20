@@ -1,5 +1,8 @@
 # Release history
 
+#### 2.1.0
+Add source code parameter.
+
 #### 2.0.1
 Fix setup.py file.
 
