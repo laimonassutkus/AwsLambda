@@ -2,7 +2,7 @@ from typing import Dict, Any, List, Optional
 from aws_cdk.aws_ec2 import SecurityGroup, Subnet, Vpc
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_lambda import Function, Code, Runtime
-from aws_cdk.core import Construct
+from aws_cdk.core import Construct, Duration
 
 
 class LambdaFunction:
@@ -57,7 +57,7 @@ class LambdaFunction:
             memory_size=memory,
             role=role,
             security_groups=security_groups,
-            timeout=timeout,
+            timeout=Duration.seconds(timeout),
             vpc=vpc,
             vpc_subnets=subnets,
             **kwargs

@@ -1,5 +1,8 @@
 # Release history
 
+#### 2.1.1
+Use time duration in CDK.
+
 #### 2.1.0
 Add source code parameter.
 
