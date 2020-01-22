@@ -1,6 +1,9 @@
 # Release history
 
 #### 2.1.1
+Include md files.
+
+#### 2.1.1
 Use time duration in CDK.
 
 #### 2.1.0
