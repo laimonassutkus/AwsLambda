@@ -8,7 +8,7 @@ with open('HISTORY.md') as history_file:
 
 setup(
     name='aws_lambda',
-    version='2.1.2',
+    version='2.1.3',
     license='GNU GENERAL PUBLIC LICENSE Version 3',
     packages=find_packages(exclude=['venv', 'test']),
     description='Package which helps to do various actions associated with AWS Lambda functions.',

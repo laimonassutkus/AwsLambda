@@ -1,5 +1,5 @@
 from typing import Dict, Any, List, Optional
-from aws_cdk.aws_ec2 import SecurityGroup, Subnet, Vpc
+from aws_cdk.aws_ec2 import SecurityGroup, Subnet, Vpc, SubnetSelection
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_lambda import Function, Code, Runtime
 from aws_cdk.core import Construct, Duration
@@ -59,6 +59,8 @@ class LambdaFunction:
             security_groups=security_groups,
             timeout=Duration.seconds(timeout),
             vpc=vpc,
-            vpc_subnets=subnets,
+            vpc_subnets=SubnetSelection(
+                subnets=subnets
+            ),
             **kwargs
         )
